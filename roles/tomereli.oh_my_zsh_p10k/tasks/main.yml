@@ -1,0 +1,130 @@
+---
+
+- name: install dependencies
+  become: yes
+  package:
+    name:
+      - git
+      - zsh
+      - thefuck
+      - bat
+      - fzf
+    state: present
+
+- name: clone oh-my-zsh for users
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/robbyrussell/oh-my-zsh.git'
+    version: master
+    dest: '~/.oh-my-zsh'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: clone powerlevel10k for users
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/romkatv/powerlevel10k.git'
+    version: master
+    dest: '~/.oh-my-zsh/custom/themes/powerlevel10k'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: clone zsh-autosuggestions for users
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions.git'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: clone zsh-syntax-highlighting for users
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: write .zshrc for users
+  become: yes
+  become_user: '{{ item.username }}'
+  template:
+    src: .zshrc.j2
+    dest: '~/.zshrc'
+    backup: yes
+    mode: 'u=rw,go=r'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: write .p10k.zsh for users
+  become: yes
+  become_user: '{{ item.username }}'
+  copy:
+    src: .p10k.zsh
+    dest: ~/.p10k.zsh
+    backup: yes
+    mode: 'u=rw,go=r'
+  with_items: '{{ users }}'
+  when: users is defined 
+
+- name: set default shell for users
+  become: yes
+  user:
+    name: '{{ item.username }}'
+    shell: /bin/zsh
+  with_items: '{{ users }}'
+  when: users is defined 
+
+- name: installing zsh-z plugin
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/agkozak/zsh-z'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-z'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: installing zsh-completions 1/2
+  become: yes
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/zsh-users/zsh-completions'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-completions'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: whriting .zshrc config file for zsh-completions 2/2
+  become: yes
+  become_user: '{{ item.username }}'
+  lineinfile:
+      path: ~/.zshrc
+      line: 'autoload -U compinit && compinit'
+      state: present
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: installing zsh-syntax-highlighting
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting'
+  with_items: '{{ users }}'
+  when: users is defined
+
+- name: installing zsh-autosuggestions
+  become_user: '{{ item.username }}'
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    version: master
+    dest: '~/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
+  with_items: '{{ users }}'
+  when: users is defined

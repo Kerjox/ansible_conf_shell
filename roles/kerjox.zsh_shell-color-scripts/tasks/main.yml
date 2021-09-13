@@ -1,0 +1,4 @@
+---
+# tasks file for kerjox.zsh_shell-color-scripts
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'

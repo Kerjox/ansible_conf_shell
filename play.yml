@@ -1,0 +1,46 @@
+---
+# ansible-playbook play.yml --ask-become-pass
+
+- name: "DoStuff"
+  hosts: localhost
+  connection: local
+  become: true
+  vars:
+    username: ansibletest
+
+  pre_tasks:
+    - name: Update packages
+      apt:
+        update_cache: true
+        upgrade: 'yes'
+
+    - name: Install apt stuff
+      apt:
+        pkg:
+        - git
+        - curl
+        - vlc
+        - tree
+        - nmap
+        - net-tools
+        state: present
+
+  roles:
+     - role: tomereli.oh_my_zsh_p10k
+       users:
+         - username: "{{ username }}"
+
+     - role: kerjox.oh_my_zsh_colorls
+       users:
+         - username: "{{ username }}"
+
+     - role: geerlingguy.docker
+       docker_users:
+         - "{{ username }}"
+
+     - role: kerjox.ufw-docker
+     
+     - role: kerjox.zsh_shell-color-scripts
+       users:
+         - username: "{{ username }}"
+
