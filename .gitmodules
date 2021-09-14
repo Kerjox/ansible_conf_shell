@@ -1,9 +1,10 @@
 [submodule "roles/kerjox.oh_my_zsh_colorls"]
 	path = roles/kerjox.oh_my_zsh_colorls
 	url = https://github.com/Kerjox/ansible-role-oh_my_zsh_colorls.git
-[submodule ".\\roles\\kerjox.docker\\"]
-	path = .\\roles\\kerjox.docker\\
+	branch = main
+[submodule "roles/kerjox.docker"]
+	path = roles/kerjox.docker
 	url = https://github.com/Kerjox/ansible-role-docker.git
-[submodule ".\\roles\\kerjox.oh_my_zsh_p10k\\"]
-	path = .\\roles\\kerjox.oh_my_zsh_p10k\\
+[submodule "roles/kerjox.oh_my_zsh_p10k"]
+	path = roles/kerjox.oh_my_zsh_p10k
 	url = https://github.com/Kerjox/ansible-role-oh-my-zsh-p10k.git
