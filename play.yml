@@ -26,7 +26,11 @@
         state: present
 
   roles:
-     - role: tomereli.oh_my_zsh_p10k
+     - role: kerjox.oh_my_zsh_p10k
+       users:
+         - username: "{{ username }}"
+
+     - role: kerjox.zsh_shell-color-scripts
        users:
          - username: "{{ username }}"
 
@@ -34,13 +38,8 @@
        users:
          - username: "{{ username }}"
 
-     - role: geerlingguy.docker
+     - role: kerjox.docker
        docker_users:
          - "{{ username }}"
 
      - role: kerjox.ufw-docker
-     
-     - role: kerjox.zsh_shell-color-scripts
-       users:
-         - username: "{{ username }}"
-
