@@ -1,4 +1,10 @@
 ---
+- name: Install apt requirements
+  apt:
+    pkg:
+      - curl
+      - unzip
+    state: present
 - name: Install Nano Syntax Highlighting
   block:
   - name: Fetch installer of Nano Syntax Highlighting

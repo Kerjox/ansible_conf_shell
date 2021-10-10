@@ -19,7 +19,6 @@
         pkg:
           - git
           - curl
-          - vlc
           - tree
           - nmap
           - net-tools
