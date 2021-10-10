@@ -1,15 +1,14 @@
 ---
-tasks:
-  - name: Install Nano Syntax Highlighting
-    block:
-    - name: Fetch installer of Nano Syntax Highlighting
-      uri:
-        url: https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh
-        return_content: yes
-      register: nsh_installer
+- name: Install Nano Syntax Highlighting
+  block:
+  - name: Fetch installer of Nano Syntax Highlighting
+    uri:
+      url: https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh
+      return_content: yes
+    register: nsh_installer
 
-    - name: Run Nano Syntax Highlighting installer
-      become_user: "{{ username }}"
-      shell: 
-        cmd: sh
-        stdin: "{{ nsh_installer.content }}"
+  - name: Run Nano Syntax Highlighting installer
+    become_user: "{{ username }}"
+    shell: 
+      cmd: sh
+      stdin: "{{ nsh_installer.content }}"
