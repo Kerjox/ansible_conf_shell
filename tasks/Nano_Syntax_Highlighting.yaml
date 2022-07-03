@@ -4,6 +4,7 @@
     pkg:
       - curl
       - unzip
+      - wget
     state: present
 - name: Install Nano Syntax Highlighting
   block:
@@ -15,6 +16,6 @@
 
   - name: Run Nano Syntax Highlighting installer
     become_user: "{{ username }}"
-    shell: 
+    shell:
       cmd: sh
       stdin: "{{ nsh_installer.content }}"
