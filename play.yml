@@ -14,17 +14,9 @@
         update_cache: true
         upgrade: "yes"
 
-    - name: Install apt stuff
-      apt:
-        pkg:
-          - git
-          - curl
-          - tree
-          - nmap
-          - net-tools
-        state: present
-
   tasks:
+    - name: install apt stuff
+      import_task: tasks/install_apt_stuff.yaml
     - name: Install Nano_Syntax_Highlighting
       import_tasks: tasks/Nano_Syntax_Highlighting.yaml
 
