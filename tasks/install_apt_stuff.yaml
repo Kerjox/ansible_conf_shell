@@ -1,0 +1,14 @@
+---
+- name: Install apt stuff
+  apt:
+    pkg:
+      - curl
+      - unzip
+      - wget
+      - nala
+      - git
+      - curl
+      - tree
+      - nmap
+      - net-tools
+    state: present
