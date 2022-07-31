@@ -33,8 +33,4 @@
       users:
         - username: "{{ username }}"
 
-    - role: kerjox.docker
-      docker_users:
-        - "{{ username }}"
-
     - role: kerjox.ufw-docker
