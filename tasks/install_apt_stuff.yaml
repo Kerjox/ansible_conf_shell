@@ -11,4 +11,5 @@
       - tree
       - nmap
       - net-tools
+      - trash-cli
     state: present
