@@ -1,2 +1,2 @@
 #!/bin/bash
-ansible play.yml --ask-become-pass
+ansible-playbook play.yml --ask-become-pass

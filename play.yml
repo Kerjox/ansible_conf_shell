@@ -6,7 +6,7 @@
   connection: local
   become: true
   vars:
-    username: ansibletest
+    username: dani
 
   pre_tasks:
     - name: Update packages
@@ -15,8 +15,8 @@
         upgrade: "yes"
 
   tasks:
-    - name: install apt stuff
-      import_task: tasks/install_apt_stuff.yaml
+    - name: Install apt stuff
+      import_tasks: tasks/apt_stuff.yaml
     - name: Install Nano_Syntax_Highlighting
       import_tasks: tasks/Nano_Syntax_Highlighting.yaml
     - name: Install Hack Nert Font
