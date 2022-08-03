@@ -19,6 +19,8 @@
       import_task: tasks/install_apt_stuff.yaml
     - name: Install Nano_Syntax_Highlighting
       import_tasks: tasks/Nano_Syntax_Highlighting.yaml
+    - name: Install Hack Nert Font
+      import_tasks: tasks/hack_nert_font.yaml
 
   roles:
     - role: kerjox.oh_my_zsh_p10k
@@ -28,9 +30,3 @@
     - role: kerjox.zsh_shell-color-scripts
       users:
         - username: "{{ username }}"
-
-    - role: kerjox.oh_my_zsh_colorls
-      users:
-        - username: "{{ username }}"
-
-    - role: kerjox.ufw-docker

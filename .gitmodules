@@ -1,7 +1,3 @@
-[submodule "roles/kerjox.oh_my_zsh_colorls"]
-	path = roles/kerjox.oh_my_zsh_colorls
-	url = https://github.com/Kerjox/ansible-role-oh_my_zsh_colorls.git
-	branch = main
 [submodule "roles/kerjox.oh_my_zsh_p10k"]
 	path = roles/kerjox.oh_my_zsh_p10k
 	url = https://github.com/Kerjox/ansible-role-oh-my-zsh-p10k.git
