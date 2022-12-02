@@ -4,7 +4,6 @@
       - curl
       - unzip
       - wget
-      - nala-legacy
       - git
       - curl
       - tree
