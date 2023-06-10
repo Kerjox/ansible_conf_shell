@@ -1,0 +1,7 @@
+- name: "Confiugre Apps"
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Nano_Syntax_Highlighting
+      ansible.builtin.import_role:
+        name: nano_syntax_highlighting

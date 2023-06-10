@@ -1,0 +1,13 @@
+- name: Install requirements
+  ansible.builtin.apt:
+    pkg:
+      - curl
+      - unzip
+    state: present
+
+- name: Install Nano Syntax Highlighting
+  become_user: '{{ item }}'
+  ansible.builtin.shell:
+    cmd: curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+  loop: '{{ users }}'
+  when: users is defined

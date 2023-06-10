@@ -1,0 +1,11 @@
+apt_packages:
+  - curl
+  - unzip
+  - wget
+  - git
+  - curl
+  - tree
+  - nmap
+  - net-tools
+  - trash-cli
+  - tldr

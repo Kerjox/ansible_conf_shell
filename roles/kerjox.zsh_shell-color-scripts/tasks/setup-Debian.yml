@@ -1,24 +1,22 @@
 ---
 - name: copy colorscripts
-  become: yes
   copy:
     src: colorscripts
     dest: '/opt/shell-color-scripts/'
     mode: 'u=rwxr,g=xr,o=rx'
 
 - name: download colorscript file
-  become: true
   get_url:
     url: https://gitlab.com/dwt1/shell-color-scripts/-/raw/master/colorscript.sh
     dest: /usr/bin/colorscript
     mode: 'u=rwxr,g=xr,o=rx'
 
 - name: whriting .zshrc config file for colorscripts
-  become_user: '{{ item.username }}'
+  become_user: '{{ item }}'
   lineinfile:
       path: ~/.zshrc
       line: 'colorscript random'
       state: present
       insertbefore: BOF
-  with_items: '{{ users }}'
+  loop: '{{ users }}'
   when: users is defined

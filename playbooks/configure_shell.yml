@@ -1,0 +1,18 @@
+---
+# ansible-playbook play.yml --ask-become-pass
+
+- name: "Confiugre ZSH"
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Hack Nert Font
+      ansible.builtin.import_role:
+        name: hack_nerdfonts
+
+    - name: Install Oh_My_Zsh with p10k
+      ansible.builtin.import_role:
+        name: kerjox.oh_my_zsh_p10k
+
+    - name: Install Shell_Color_Scripts
+      ansible.builtin.import_role:
+        name: kerjox.zsh_shell-color-scripts

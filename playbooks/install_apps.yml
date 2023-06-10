@@ -1,0 +1,7 @@
+- name: "Install apps"
+  hosts: all
+  become: true
+  tasks:
+    - name: Install apt stuff
+      ansible.builtin.import_role:
+        name: install_apt_stuff
